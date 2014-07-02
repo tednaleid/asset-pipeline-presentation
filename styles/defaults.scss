@@ -1,0 +1,49 @@
+// modified version of shower-ribbon theme
+
+// Layout
+$width:1024px;  // Slide width, permanent in most cases
+$height:640px;  // Slide height, 640px for 16:10, 768px for 4:3
+$top:30px;     // Top padding above slide content
+$sides:30px;   // Left and right paddings around slide content
+$break:1324px;  // Window width for small thumbnails to appear
+$ratio:'16x10'; // Available options: '16x10' or '4x3'
+
+// Colors
+$blue:#4B86C2;
+$grey:#2A2B2D;
+$yellow:#FAFAA2;
+$light-green: rgb(190, 214, 194);
+$dark-green: rgb(74, 142, 87); 
+$medium-green: rgb(101, 193, 120);
+$reddish: rgb(255, 81, 67);
+$white-grey: rgb(242, 242, 240);
+$dark-grey: rgb(66, 66, 64);
+
+$titles: $medium-green;
+$accents: $dark-green;
+$danger: $reddish;
+$slide-background: $white-grey;
+$terminal-background: $dark-grey;
+$terminal-text: $light-green;
+
+// #999 1px
+$dot:'data:image/gif;base64,R0lGODdhAQABAPAAAJmZmQAAACH/C1hNUCBEYXRhWE1QAj94ACwAAAAAAQABAAACAkQBADs=';
+
+// Mixins
+@mixin retina {
+	@media (-webkit-min-device-pixel-ratio:2), (min-resolution:192dpi) {
+		@content;
+		}
+	}
+
+// Underline
+@mixin underline($color, $width) {
+	background:
+		linear-gradient(
+			to top,
+			$color,
+			$color #{$width}em,
+			transparent #{$width}em,
+			transparent
+		) repeat-x;
+	}
