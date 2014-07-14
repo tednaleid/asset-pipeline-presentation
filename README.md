@@ -1,4 +1,4 @@
-Presentation is in readme.html.  There is no need to run a server, just open the index.html file.
+Presentation is in index.html.  There is no need to run a server, just clone the repo and open the index.html file.
 
 Printing to PDF can be done as long as you size your browser to 1024x768.  Should be one slide per page then.
 

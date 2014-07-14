@@ -8,7 +8,7 @@
 	<meta name="generator" content="https://github.com/sapegin/grunt-shower-markdown">
 	<link rel="stylesheet" href="themes/ribbon/styles/screen.css">
 	
-		<link rel="stylesheet" href="styles/screen.css?1404441394000">
+		<link rel="stylesheet" href="styles/screen.css?1405307511000">
 	
 </head>
 <body class="list">
@@ -20,18 +20,128 @@
 
 	
 	<section class="slide quieter shout" ><div>
-		<h1>Using the Grails Asset-Pipeline Plugin</h1>
+		<h1>Using Grails<br/>Asset-Pipeline</h1>
 <h2>by <a href="https://twitter.com/tednaleid">@tednaleid</a></h2>
 
 	</div></section>
 	
 	<section class="slide shout" ><div>
-		<h1>here is a shouty slide</h1>
+		<h1>What is an &#8220;asset&#8221;?</h1>
 
 	</div></section>
 	
 	<section class="slide quietest shout" ><div>
-		<h1>here are some &#8220;smart quotes&#8221;</h1>
+		<h1>assets are &#8220;static&#8221; files<br/><br/>CSS, JavaScript, HTML &amp; Images</h1>
+
+	</div></section>
+	
+	<section class="slide shout" ><div>
+		<h1>Why do assets need a &#8220;pipeline&#8221;?</h1>
+
+	</div></section>
+	
+	<section class="slide quieter shout" ><div>
+		<h1>the asset you should serve is not the asset you develop</h1>
+
+	</div></section>
+	
+	<section class="slide quietest shout" ><div>
+		<h1>JavaScript should be served concatenated, minified &amp; gzipped with long-lived cache headers</h1>
+
+	</div></section>
+	
+	<section class="slide quietest shout" ><div>
+		<h1>JavaScript should be developed<br/>as many small files</h1>
+<h2>Just like your Groovy and Java code</h2>
+
+	</div></section>
+	
+	<section class="slide quietest shout" ><div>
+		<h1>Your source code might not even be JavaScript</h1>
+<h2>(i.e. CoffeeScript, ClojureScript, ES6, Dart, TypeScript, …)</h2>
+
+	</div></section>
+	
+	<section class="slide quieter shout" ><div>
+		<h1>The best place to do all of this is compile-time</h1>
+<h2>then you&#39;re just serving static files</h2>
+
+	</div></section>
+	
+	<section class="slide shout" ><div>
+		<h1>Status Quo</h1>
+
+	</div></section>
+	
+	<section class="slide shout" ><div>
+		<h1>How You Develop With It</h1>
+
+	</div></section>
+	
+	<section class="slide quietest shout" ><div>
+		<ul>
+<li>put everything in assets</li>
+<li>file types with manifest comments in them</li>
+<li>taglibs in gsps<ul>
+<li>asset:image</li>
+</ul>
+</li>
+<li>dev mode asset controller?</li>
+</ul>
+
+	</div></section>
+	
+	<section class="slide shout" ><div>
+		<h1>How it Works In Production</h1>
+
+	</div></section>
+	
+	<section class="slide quietest shout" ><div>
+		<ul>
+<li>war compilation</li>
+<li>war creates manifest.properties file</li>
+<li>static assets in <code>assets</code> folder in the war file</li>
+</ul>
+
+	</div></section>
+	
+	<section class="slide quietest shout" ><div>
+		<ul>
+<li><code>AssetPipelineFilter</code> added to <code>web.xml</code></li>
+<li>request for asset meets filter</li>
+<li>looks for file</li>
+<li>not found 404</li>
+<li>if found looks for etag in manifest</li>
+<li>returns with etag and <code>Vary: Accept-Encoding</code></li>
+</ul>
+
+	</div></section>
+	
+	<section class="slide quietest shout" ><div>
+		<h1>Compilation Sausage Factory</h1>
+<ul>
+<li>AssetFile (1 per file)</li>
+<li>processor</li>
+<li>post processor?</li>
+<li>look at plugin.groovy file for other details</li>
+</ul>
+
+	</div></section>
+	
+	<section class="slide quieter shout" ><div>
+		<h1>tips</h1>
+<ul>
+<li>angular mangling off for minifcation</li>
+<li>cdn support</li>
+<li>other plugins</li>
+<li>write your own asset pipeline plugin</li>
+<li>dynamic links in JS, compiling into template cache</li>
+</ul>
+
+	</div></section>
+	
+	<section class="slide quieter shout" ><div>
+		<h1>changes from resources</h1>
 
 	</div></section>
 	
