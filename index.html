@@ -8,7 +8,7 @@
 	<meta name="generator" content="https://github.com/sapegin/grunt-shower-markdown">
 	<link rel="stylesheet" href="themes/ribbon/styles/screen.css">
 	
-		<link rel="stylesheet" href="styles/screen.css?1405307511000">
+		<link rel="stylesheet" href="styles/screen.css?1406085686000">
 	
 </head>
 <body class="list">
@@ -68,8 +68,77 @@
 
 	</div></section>
 	
+	<section class="slide quieter shout" ><div>
+		<h1>Behavior<br/>With &amp; Without<br/>Asset-Pipeline</h1>
+<h2>(or the resources plugin)</h2>
+
+	</div></section>
+	
+	<section class="slide " ><div>
+		<h2>Without Asset-Pipeline</h2>
+<h1>Your layout is littered with CSS &amp; JS tags</h1>
+<pre><code>TODO: insert angular/lodash/moment/etc example</code>
+<code>//maybe from angular js bootstrap?</code>
+<code>&lt;script src=&#39;foo.js&#39;&gt;&lt;/script&gt;</code></pre>
+	</div></section>
+	
+	<section class="slide " ><div>
+		<h2>With Asset-Pipeline</h2>
+<h1>Assets concatenated, minified, gzipped into a single file per type</h1>
+<pre><code>TODO: insert angular/lodash/moment/etc example</code>
+<code>//maybe from angular js bootstrap?</code>
+<code>&lt;script src=&#39;foo.js&#39;&gt;&lt;/script&gt;</code></pre>
+	</div></section>
+	
+	<section class="slide " ><div>
+		<h2>Without Asset-Pipeline</h2>
+<h1>Dependencies are difficult to manage and maintain</h1>
+<pre><code>TODO: insert angular/lodash/moment/etc example</code>
+<code>// explain how all files are in one place, deleting a file doesn&#39;t delete dependencies</code></pre>
+	</div></section>
+	
+	<section class="slide " ><div>
+		<h2>With Asset-Pipeline</h2>
+<h1>Dependencies are specified within each file, allows inclusion of directories and trees</h1>
+<pre><code>TODO: show how dependencies are in top of file</code></pre>
+	</div></section>
+	
+	<section class="slide " ><div>
+		<h2>Without Asset-Pipeline</h2>
+<h1>Browser cache isn&#39;t properly used</h1>
+<img src="images/vanilla_grails_response.png" alt="Vanilla grails response, no caching, reloads every time">
+
+	</div></section>
+	
+	<section class="slide " ><div>
+		<h2>With Asset-Pipeline</h2>
+<h1>Browser Cache Leveraged</h1>
+<img src="images/AP_grails_response.png" alt="etags, expires, gzipping, etc">
+
+	</div></section>
+	
+	<section class="slide " ><div>
+		<h2>Without Asset-Pipeline</h2>
+<h1>Limited to browser-supported languages</h1>
+<h2>i.e. CSS and JavaScript</h2>
+
+	</div></section>
+	
+	<section class="slide " ><div>
+		<h2>With Asset-Pipeline</h2>
+<h1>Can use anything that compiles to browser-supported languages</h1>
+<h2>ex: CoffeeScript, ClojureScript, Dart, TypeScript, SASS, LESS, etc</h2>
+
+	</div></section>
+	
 	<section class="slide shout" ><div>
-		<h1>Status Quo</h1>
+		<h1>Current Plugins???</h1>
+<ul>
+<li>coffeescript</li>
+<li>sass</li>
+<li>angularjs</li>
+<li>others</li>
+</ul>
 
 	</div></section>
 	
@@ -99,7 +168,7 @@
 	<section class="slide quietest shout" ><div>
 		<ul>
 <li>war compilation</li>
-<li>war creates manifest.properties file</li>
+<li>war creates manifest.properties file with etag mapping for each asset</li>
 <li>static assets in <code>assets</code> folder in the war file</li>
 </ul>
 
@@ -112,7 +181,10 @@
 <li>looks for file</li>
 <li>not found 404</li>
 <li>if found looks for etag in manifest</li>
-<li>returns with etag and <code>Vary: Accept-Encoding</code></li>
+<li>returns gzipped file with etag and <code>Vary: Accept-Encoding</code></li>
+</ul>
+<ul>
+<li>cdn support?</li>
 </ul>
 
 	</div></section>
@@ -141,27 +213,60 @@
 	</div></section>
 	
 	<section class="slide quieter shout" ><div>
-		<h1>changes from resources</h1>
+		<h1>Advantages over Resources Plugin</h1>
 
 	</div></section>
 	
-	<section class="slide " ><div>
-		<p><br/></p>
-<h1>commit</h1>
-<p>A slide with code both <code>inline</code> and in a block:</p>
-<pre><code>here is some code</code>
-<code>    indented</code></pre>
+	<section class="slide quieter shout" ><div>
+		<h1>no waiting to recompile in development</h1>
+
 	</div></section>
 	
-	<section class="slide " ><div>
-		<h1>Look! An Image!</h1>
-<img src="images/linen.png" alt="">
+	<section class="slide quieter shout" ><div>
+		<h1>precompilation means easier troubleshooting &amp; faster war startup</h1>
+
+	</div></section>
+	
+	<section class="slide quieter shout" ><div>
+		<h1>dependencies are with assets</h1>
+
+	</div></section>
+	
+	<section class="slide quieter shout" ><div>
+		<h1>Migrating from Resources Plugin</h1>
+
+	</div></section>
+	
+	<section class="slide quieter shout" ><div>
+		<h1>insert resources rosetta stone</h1>
 
 	</div></section>
 	
 	<section class="slide shout" ><div>
-		<h1>Danger!</h1>
-<p><span class="danger">dangerous</span></p>
+		<h1>Asset-Pipeline Alternatives</h1>
+
+	</div></section>
+	
+	<section class="slide quieter shout" ><div>
+		<h1>Alternatives in Grails</h1>
+
+	</div></section>
+	
+	<section class="slide quieter shout" ><div>
+		<h1>gradle</h1>
+<h2>weak JS support, not part of grails build without more work, doesn&#39;t solve caching/etags</h2>
+
+	</div></section>
+	
+	<section class="slide quieter shout" ><div>
+		<h1>grunt/gulp</h1>
+<h2>requires buy-in/support of node.js ecosystem, doesn&#39;t solve caching/etags</h2>
+
+	</div></section>
+	
+	<section class="slide quieter shout" ><div>
+		<h1>resources plugin</h1>
+<h2>deprecated, more painful to work with</h2>
 
 	</div></section>
 	

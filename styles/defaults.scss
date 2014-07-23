@@ -12,15 +12,16 @@ $ratio:'16x10'; // Available options: '16x10' or '4x3'
 $blue:#4B86C2;
 $grey:#2A2B2D;
 $yellow:#FAFAA2;
+$dark-green: rgb(0, 187, 37); 
 $light-green: rgb(190, 214, 194);
-$dark-green: rgb(74, 142, 87); 
+$purply: rgb(136, 101, 193); 
 $medium-green: rgb(101, 193, 120);
 $reddish: rgb(255, 81, 67);
 $white-grey: rgb(242, 242, 240);
 $dark-grey: rgb(66, 66, 64);
 
 $titles: $medium-green;
-$accents: $dark-green;
+$accents: $purply;
 $danger: $reddish;
 $slide-background: $white-grey;
 $terminal-background: $dark-grey;
