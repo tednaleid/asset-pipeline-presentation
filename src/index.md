@@ -46,99 +46,132 @@ by <a href="https://twitter.com/tednaleid">@tednaleid</a>
 
 
 !SLIDE quieter shout
-# Behavior<br/>With & Without<br/>Asset-Pipeline
+# Behavior<br/>With & <span class="danger">Without</span><br/>Asset-Pipeline
 
 ## (or the resources plugin)
 
 
-!SLIDE  
+!SLIDE small-code danger 
 ## Without Asset-Pipeline
-# Your layout is littered with CSS & JS tags
+# Your layout is littered with tags
 
 ```
-TODO: insert angular/lodash/moment/etc example
-//maybe from angular js bootstrap?
-<script src='foo.js'></script>
+<link rel="stylesheet" href="/test-app/assets/main.css" />
+<link rel="stylesheet" href="/test-app/assets/mobile.css" />
+<link rel="stylesheet" href="/test-app/assets/application.css" />
+
+<script src="/test-app/assets/vendor/angular/angular-route.js" type="text/javascript" ></script>
+<script src="/test-app/assets/vendor/jquery/jquery.js" type="text/javascript" ></script>
+<script src="/test-app/assets/vendor/mongolab/mongolab-resource.js" type="text/javascript" ></script>
+<script src="/test-app/assets/app/admin/admin.js" type="text/javascript" ></script>
+<script src="/test-app/assets/app/admin/projects/admin-projects.js" type="text/javascript" ></script>
+<script src="/test-app/assets/app/admin/users/admin-users-edit.js" type="text/javascript" ></script>
+<script src="/test-app/assets/app/admin/users/admin-users-list.js" type="text/javascript" ></script>
+<script src="/test-app/assets/app/admin/users/admin-users.js" type="text/javascript" ></script>
+<script src="/test-app/assets/app/admin/users/uniqueEmail.js" type="text/javascript" ></script>
+<script src="/test-app/assets/app/admin/users/validateEquals.js" type="text/javascript" ></script>
+<script src="/test-app/assets/app/app.js" type="text/javascript" ></script>
+<script src="/test-app/assets/app/dashboard/dashboard.js" type="text/javascript" ></script>
+<script src="/test-app/assets/app/projects/productbacklog/productbacklog.js" type="text/javascript" ></script>
+<script src="/test-app/assets/app/projects/projects.js" type="text/javascript" ></script>
+<script src="/test-app/assets/app/projects/sprints/sprints.js" type="text/javascript" ></script>
+<script src="/test-app/assets/app/projects/sprints/tasks/tasks.js" type="text/javascript" ></script>
+<script src="/test-app/assets/app/projectsinfo/projectsinfo.js" type="text/javascript" ></script>
+<script src="/test-app/assets/application.js" type="text/javascript" ></script>
 ```
 
-!SLIDE  
+!SLIDE danger 
+## Without Asset-Pipeline 
+# Each tag is a request to the server
+
+<img src="images/litter.png" alt="one request per tag" width="78%">
+
+!SLIDE small-code push-content-down
 ## With Asset-Pipeline
-# Assets concatenated, minified, gzipped into a single file per type
+# Assets transpiled, concatenated, minified, gzipped into one file per type
 
 ```
-TODO: insert angular/lodash/moment/etc example
-//maybe from angular js bootstrap?
-<script src='foo.js'></script>
+<link rel="stylesheet" href="/test-app/assets/application-08f92c4662379e3e9a56541af70c871c.css"/>
+
+<script src="/test-app/assets/application-e1ec7cb3d4c455fac6e62f1faa6232f9.js" type="text/javascript" ></script>
 ```
 
-
-
-
-!SLIDE  
-## Without Asset-Pipeline
-# Dependencies are difficult to manage and maintain
-
-```
-TODO: insert angular/lodash/moment/etc example
-// explain how all files are in one place, deleting a file doesn't delete dependencies
-```
-
-!SLIDE  
+!SLIDE push-content-down
 ## With Asset-Pipeline
-# Dependencies are specified within each file, allows inclusion of directories and trees
+# One server hit per file type 
 
-```
-TODO: show how dependencies are in top of file
-```
+<img src="images/justonehit.png" alt="one request per asset type" width="100%">
 
-!SLIDE  
+
+!SLIDE danger
 ## Without Asset-Pipeline
 # Browser cache isn't properly used
 
-<img src="images/vanilla_grails_response.png" alt="Vanilla grails response, no caching, reloads every time">
+<img src="images/vanilla_grails_response.png" alt="Vanilla grails response, no gzipping, bad etag" width="73%">
 
 !SLIDE  
 ## With Asset-Pipeline
-# Browser Cache Leveraged
+# Initial Request - Good Cache Headers
 
-<img src="images/AP_grails_response.png" alt="etags, expires, gzipping, etc">
+<img src="images/AP_grails_response.png" alt="etags, expires, gzipping, etc" width="100%">
 
 
 !SLIDE  
+## With Asset-Pipeline
+# Next Request - Cache Hit
+
+<img src="images/AP_grails_cached_response.png" alt="etags, expires, gzipping, etc" width="90%">
+
+
+!SLIDE danger push-content-down
 ## Without Asset-Pipeline
 # Limited to browser-supported languages 
 ## i.e. CSS and JavaScript
 
 
-!SLIDE  
+!SLIDE push-content-down
 ## With Asset-Pipeline
-# Can use anything that compiles to browser-supported languages
-## ex: CoffeeScript, ClojureScript, Dart, TypeScript, SASS, LESS, etc
+# Can use anything that transpiles to browser-supported languages
+## ex: SASS, LESS, CoffeeScript, ClojureScript, Dart, TypeScript…
+
+!SLIDE shout
+# Developing With Asset-Pipeline 
+
+
+!SLIDE 
+# Files go in `grails-app/assets`
+
+<img src="images/assetdir.png" alt="assetdir" height="80%">
+
+
+!SLIDE 
+# TODO START HERE
+
+!SLIDE 
+# file types with manifest comments in them
+
+!SLIDE
+# taglibs in gsps
+
+```
+  asset:image
+```
+
+!SLIDE
+# dev mode goes through asset controller
+
+!SLIDE
+# assets served as individual files
+
+```
+show generated html
+```
+
+set to never cache
 
 
 !SLIDE shout
-# Current Plugins???
-- coffeescript
-- sass
-- angularjs
-- others
-
-
-!SLIDE shout
-# How You Develop With It
-
-
-!SLIDE quietest shout
-
-- put everything in assets
-- file types with manifest comments in them
-- taglibs in gsps
-  - asset:image
-- dev mode asset controller?
-
-
-!SLIDE shout
-# How it Works In Production
+# How Asset-Pipeline Works In Production
 
 
 !SLIDE quietest shout
@@ -173,11 +206,10 @@ TODO: show how dependencies are in top of file
 !SLIDE quieter shout
 #  tips
 
-- angular mangling off for minifcation
+- angular mangling off for minifcation, or use angular plugin
 - cdn support
 - other plugins
 - write your own asset pipeline plugin
-- dynamic links in JS, compiling into template cache
 
 
 !SLIDE quieter shout
@@ -193,36 +225,31 @@ TODO: show how dependencies are in top of file
 !SLIDE quieter shout
 # dependencies are with assets
 
-!SLIDE quieter shout
+!SLIDE shout
 # Migrating from Resources Plugin
 
-
 !SLIDE quieter shout
-# insert resources rosetta stone
-
-
-
-
-
+# TODO: insert resources rosetta stone
 
 
 !SLIDE shout
 # Asset-Pipeline Alternatives
 
-!SLIDE quieter shout
-# Alternatives in Grails
 
 !SLIDE quieter shout
 # gradle 
 ## weak JS support, not part of grails build without more work, doesn't solve caching/etags
 
+
 !SLIDE quieter shout
 # grunt/gulp 
 ## requires buy-in/support of node.js ecosystem, doesn't solve caching/etags
 
+
 !SLIDE quieter shout
 # resources plugin 
 ## deprecated, more painful to work with
+
 
 !SLIDE shout
 # Questions? 

@@ -8,7 +8,7 @@
 	<meta name="generator" content="https://github.com/sapegin/grunt-shower-markdown">
 	<link rel="stylesheet" href="themes/ribbon/styles/screen.css">
 	
-		<link rel="stylesheet" href="styles/screen.css?1406085686000">
+		<link rel="stylesheet" href="styles/screen.css?1406402721000">
 	
 </head>
 <body class="list">
@@ -69,99 +69,134 @@
 	</div></section>
 	
 	<section class="slide quieter shout" ><div>
-		<h1>Behavior<br/>With &amp; Without<br/>Asset-Pipeline</h1>
+		<h1>Behavior<br/>With &amp; <span class="danger">Without</span><br/>Asset-Pipeline</h1>
 <h2>(or the resources plugin)</h2>
 
 	</div></section>
 	
-	<section class="slide " ><div>
+	<section class="slide small-code danger" ><div>
 		<h2>Without Asset-Pipeline</h2>
-<h1>Your layout is littered with CSS &amp; JS tags</h1>
-<pre><code>TODO: insert angular/lodash/moment/etc example</code>
-<code>//maybe from angular js bootstrap?</code>
-<code>&lt;script src=&#39;foo.js&#39;&gt;&lt;/script&gt;</code></pre>
+<h1>Your layout is littered with tags</h1>
+<pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/test-app/assets/main.css&quot; /&gt;</code>
+<code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/test-app/assets/mobile.css&quot; /&gt;</code>
+<code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/test-app/assets/application.css&quot; /&gt;</code>
+<code>&shy;</code>
+<code>&lt;script src=&quot;/test-app/assets/vendor/angular/angular-route.js&quot; type=&quot;text/javascript&quot; &gt;&lt;/script&gt;</code>
+<code>&lt;script src=&quot;/test-app/assets/vendor/jquery/jquery.js&quot; type=&quot;text/javascript&quot; &gt;&lt;/script&gt;</code>
+<code>&lt;script src=&quot;/test-app/assets/vendor/mongolab/mongolab-resource.js&quot; type=&quot;text/javascript&quot; &gt;&lt;/script&gt;</code>
+<code>&lt;script src=&quot;/test-app/assets/app/admin/admin.js&quot; type=&quot;text/javascript&quot; &gt;&lt;/script&gt;</code>
+<code>&lt;script src=&quot;/test-app/assets/app/admin/projects/admin-projects.js&quot; type=&quot;text/javascript&quot; &gt;&lt;/script&gt;</code>
+<code>&lt;script src=&quot;/test-app/assets/app/admin/users/admin-users-edit.js&quot; type=&quot;text/javascript&quot; &gt;&lt;/script&gt;</code>
+<code>&lt;script src=&quot;/test-app/assets/app/admin/users/admin-users-list.js&quot; type=&quot;text/javascript&quot; &gt;&lt;/script&gt;</code>
+<code>&lt;script src=&quot;/test-app/assets/app/admin/users/admin-users.js&quot; type=&quot;text/javascript&quot; &gt;&lt;/script&gt;</code>
+<code>&lt;script src=&quot;/test-app/assets/app/admin/users/uniqueEmail.js&quot; type=&quot;text/javascript&quot; &gt;&lt;/script&gt;</code>
+<code>&lt;script src=&quot;/test-app/assets/app/admin/users/validateEquals.js&quot; type=&quot;text/javascript&quot; &gt;&lt;/script&gt;</code>
+<code>&lt;script src=&quot;/test-app/assets/app/app.js&quot; type=&quot;text/javascript&quot; &gt;&lt;/script&gt;</code>
+<code>&lt;script src=&quot;/test-app/assets/app/dashboard/dashboard.js&quot; type=&quot;text/javascript&quot; &gt;&lt;/script&gt;</code>
+<code>&lt;script src=&quot;/test-app/assets/app/projects/productbacklog/productbacklog.js&quot; type=&quot;text/javascript&quot; &gt;&lt;/script&gt;</code>
+<code>&lt;script src=&quot;/test-app/assets/app/projects/projects.js&quot; type=&quot;text/javascript&quot; &gt;&lt;/script&gt;</code>
+<code>&lt;script src=&quot;/test-app/assets/app/projects/sprints/sprints.js&quot; type=&quot;text/javascript&quot; &gt;&lt;/script&gt;</code>
+<code>&lt;script src=&quot;/test-app/assets/app/projects/sprints/tasks/tasks.js&quot; type=&quot;text/javascript&quot; &gt;&lt;/script&gt;</code>
+<code>&lt;script src=&quot;/test-app/assets/app/projectsinfo/projectsinfo.js&quot; type=&quot;text/javascript&quot; &gt;&lt;/script&gt;</code>
+<code>&lt;script src=&quot;/test-app/assets/application.js&quot; type=&quot;text/javascript&quot; &gt;&lt;/script&gt;</code></pre>
 	</div></section>
 	
-	<section class="slide " ><div>
-		<h2>With Asset-Pipeline</h2>
-<h1>Assets concatenated, minified, gzipped into a single file per type</h1>
-<pre><code>TODO: insert angular/lodash/moment/etc example</code>
-<code>//maybe from angular js bootstrap?</code>
-<code>&lt;script src=&#39;foo.js&#39;&gt;&lt;/script&gt;</code></pre>
-	</div></section>
-	
-	<section class="slide " ><div>
+	<section class="slide danger" ><div>
 		<h2>Without Asset-Pipeline</h2>
-<h1>Dependencies are difficult to manage and maintain</h1>
-<pre><code>TODO: insert angular/lodash/moment/etc example</code>
-<code>// explain how all files are in one place, deleting a file doesn&#39;t delete dependencies</code></pre>
+<h1>Each tag is a request to the server</h1>
+<img src="images/litter.png" alt="one request per tag" width="78%">
+
 	</div></section>
 	
-	<section class="slide " ><div>
+	<section class="slide small-code push-content-down" ><div>
 		<h2>With Asset-Pipeline</h2>
-<h1>Dependencies are specified within each file, allows inclusion of directories and trees</h1>
-<pre><code>TODO: show how dependencies are in top of file</code></pre>
+<h1>Assets transpiled, concatenated, minified, gzipped into one file per type</h1>
+<pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/test-app/assets/application-08f92c4662379e3e9a56541af70c871c.css&quot;/&gt;</code>
+<code>&shy;</code>
+<code>&lt;script src=&quot;/test-app/assets/application-e1ec7cb3d4c455fac6e62f1faa6232f9.js&quot; type=&quot;text/javascript&quot; &gt;&lt;/script&gt;</code></pre>
 	</div></section>
 	
-	<section class="slide " ><div>
+	<section class="slide push-content-down" ><div>
+		<h2>With Asset-Pipeline</h2>
+<h1>One server hit per file type</h1>
+<img src="images/justonehit.png" alt="one request per asset type" width="100%">
+
+	</div></section>
+	
+	<section class="slide danger" ><div>
 		<h2>Without Asset-Pipeline</h2>
 <h1>Browser cache isn&#39;t properly used</h1>
-<img src="images/vanilla_grails_response.png" alt="Vanilla grails response, no caching, reloads every time">
+<img src="images/vanilla_grails_response.png" alt="Vanilla grails response, no gzipping, bad etag" width="73%">
 
 	</div></section>
 	
 	<section class="slide " ><div>
 		<h2>With Asset-Pipeline</h2>
-<h1>Browser Cache Leveraged</h1>
-<img src="images/AP_grails_response.png" alt="etags, expires, gzipping, etc">
+<h1>Initial Request - Good Cache Headers</h1>
+<img src="images/AP_grails_response.png" alt="etags, expires, gzipping, etc" width="100%">
 
 	</div></section>
 	
 	<section class="slide " ><div>
+		<h2>With Asset-Pipeline</h2>
+<h1>Next Request - Cache Hit</h1>
+<img src="images/AP_grails_cached_response.png" alt="etags, expires, gzipping, etc" width="90%">
+
+	</div></section>
+	
+	<section class="slide danger push-content-down" ><div>
 		<h2>Without Asset-Pipeline</h2>
 <h1>Limited to browser-supported languages</h1>
 <h2>i.e. CSS and JavaScript</h2>
 
 	</div></section>
 	
-	<section class="slide " ><div>
+	<section class="slide push-content-down" ><div>
 		<h2>With Asset-Pipeline</h2>
-<h1>Can use anything that compiles to browser-supported languages</h1>
-<h2>ex: CoffeeScript, ClojureScript, Dart, TypeScript, SASS, LESS, etc</h2>
+<h1>Can use anything that transpiles to browser-supported languages</h1>
+<h2>ex: SASS, LESS, CoffeeScript, ClojureScript, Dart, TypeScript…</h2>
 
 	</div></section>
 	
 	<section class="slide shout" ><div>
-		<h1>Current Plugins???</h1>
-<ul>
-<li>coffeescript</li>
-<li>sass</li>
-<li>angularjs</li>
-<li>others</li>
-</ul>
+		<h1>Developing With Asset-Pipeline</h1>
+
+	</div></section>
+	
+	<section class="slide " ><div>
+		<h1>Files go in <code>grails-app/assets</code></h1>
+<img src="images/assetdir.png" alt="assetdir" height="80%">
+
+	</div></section>
+	
+	<section class="slide " ><div>
+		<h1>TODO START HERE</h1>
+
+	</div></section>
+	
+	<section class="slide " ><div>
+		<h1>file types with manifest comments in them</h1>
+
+	</div></section>
+	
+	<section class="slide " ><div>
+		<h1>taglibs in gsps</h1>
+<pre><code>  asset:image</code></pre>
+	</div></section>
+	
+	<section class="slide " ><div>
+		<h1>dev mode goes through asset controller</h1>
+
+	</div></section>
+	
+	<section class="slide " ><div>
+		<h1>assets served as individual files</h1>
+<pre><code>show generated html</code></pre><p>set to never cache</p>
 
 	</div></section>
 	
 	<section class="slide shout" ><div>
-		<h1>How You Develop With It</h1>
-
-	</div></section>
-	
-	<section class="slide quietest shout" ><div>
-		<ul>
-<li>put everything in assets</li>
-<li>file types with manifest comments in them</li>
-<li>taglibs in gsps<ul>
-<li>asset:image</li>
-</ul>
-</li>
-<li>dev mode asset controller?</li>
-</ul>
-
-	</div></section>
-	
-	<section class="slide shout" ><div>
-		<h1>How it Works In Production</h1>
+		<h1>How Asset-Pipeline Works In Production</h1>
 
 	</div></section>
 	
@@ -203,11 +238,10 @@
 	<section class="slide quieter shout" ><div>
 		<h1>tips</h1>
 <ul>
-<li>angular mangling off for minifcation</li>
+<li>angular mangling off for minifcation, or use angular plugin</li>
 <li>cdn support</li>
 <li>other plugins</li>
 <li>write your own asset pipeline plugin</li>
-<li>dynamic links in JS, compiling into template cache</li>
 </ul>
 
 	</div></section>
@@ -232,23 +266,18 @@
 
 	</div></section>
 	
-	<section class="slide quieter shout" ><div>
+	<section class="slide shout" ><div>
 		<h1>Migrating from Resources Plugin</h1>
 
 	</div></section>
 	
 	<section class="slide quieter shout" ><div>
-		<h1>insert resources rosetta stone</h1>
+		<h1>TODO: insert resources rosetta stone</h1>
 
 	</div></section>
 	
 	<section class="slide shout" ><div>
 		<h1>Asset-Pipeline Alternatives</h1>
-
-	</div></section>
-	
-	<section class="slide quieter shout" ><div>
-		<h1>Alternatives in Grails</h1>
 
 	</div></section>
 	

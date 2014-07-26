@@ -194,6 +194,31 @@ span.danger {
 		}
 	}
 
+	&.small-code {
+		pre, code {
+			font-size: .74em;
+		}
+	}
+
+	&.smallish-code {
+		pre, code {
+			font-size: .9em;
+		}
+	}
+
+	&.push-content-down {
+		h1 {
+			padding-bottom: 60px;
+		}
+	}
+
+	&.danger {
+		h1 {
+			color: $danger;
+		}
+	}
+
+
 	&.myth {
 		h1 {
 			color: $accents;
@@ -225,7 +250,7 @@ span.danger {
 			left:0;
 			width:100%;
 			text-align:center;
-			line-height:.9;
+			line-height: 1em;
 			font-size:150px;
 			transform:translateY(-50%);
 			a {
