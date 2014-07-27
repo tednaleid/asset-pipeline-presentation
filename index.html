@@ -8,7 +8,7 @@
 	<meta name="generator" content="https://github.com/sapegin/grunt-shower-markdown">
 	<link rel="stylesheet" href="themes/ribbon/styles/screen.css">
 	
-		<link rel="stylesheet" href="styles/screen.css?1406402721000">
+		<link rel="stylesheet" href="styles/screen.css?1406492303000">
 	
 </head>
 <body class="list">
@@ -40,8 +40,8 @@
 
 	</div></section>
 	
-	<section class="slide quieter shout" ><div>
-		<h1>the asset you should serve is not the asset you develop</h1>
+	<section class="slide quietest shout" ><div>
+		<h1>the asset you should serve<br/> is not the asset you develop</h1>
 
 	</div></section>
 	
@@ -57,13 +57,13 @@
 	</div></section>
 	
 	<section class="slide quietest shout" ><div>
-		<h1>Your source code might not even be JavaScript</h1>
-<h2>(i.e. CoffeeScript, ClojureScript, ES6, Dart, TypeScript, …)</h2>
+		<h1>Your source code might not<br/>even be JavaScript</h1>
+<h2>(i.e. CoffeeScript, ClojureScript, ES6, Dart, GrooScript, …)</h2>
 
 	</div></section>
 	
-	<section class="slide quieter shout" ><div>
-		<h1>The best place to do all of this is compile-time</h1>
+	<section class="slide quietest shout" ><div>
+		<h1>The best place to do all<br/>of this is compile-time</h1>
 <h2>then you&#39;re just serving static files</h2>
 
 	</div></section>
@@ -79,7 +79,7 @@
 <h1>Your layout is littered with tags</h1>
 <pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/test-app/assets/main.css&quot; /&gt;</code>
 <code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/test-app/assets/mobile.css&quot; /&gt;</code>
-<code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/test-app/assets/application.css&quot; /&gt;</code>
+<code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/test-app/assets/app.css&quot; /&gt;</code>
 <code>&shy;</code>
 <code>&lt;script src=&quot;/test-app/assets/vendor/angular/angular-route.js&quot; type=&quot;text/javascript&quot; &gt;&lt;/script&gt;</code>
 <code>&lt;script src=&quot;/test-app/assets/vendor/jquery/jquery.js&quot; type=&quot;text/javascript&quot; &gt;&lt;/script&gt;</code>
@@ -98,22 +98,22 @@
 <code>&lt;script src=&quot;/test-app/assets/app/projects/sprints/sprints.js&quot; type=&quot;text/javascript&quot; &gt;&lt;/script&gt;</code>
 <code>&lt;script src=&quot;/test-app/assets/app/projects/sprints/tasks/tasks.js&quot; type=&quot;text/javascript&quot; &gt;&lt;/script&gt;</code>
 <code>&lt;script src=&quot;/test-app/assets/app/projectsinfo/projectsinfo.js&quot; type=&quot;text/javascript&quot; &gt;&lt;/script&gt;</code>
-<code>&lt;script src=&quot;/test-app/assets/application.js&quot; type=&quot;text/javascript&quot; &gt;&lt;/script&gt;</code></pre>
+<code>&lt;script src=&quot;/test-app/assets/app.js&quot; type=&quot;text/javascript&quot; &gt;&lt;/script&gt;</code></pre>
 	</div></section>
 	
 	<section class="slide danger" ><div>
 		<h2>Without Asset-Pipeline</h2>
 <h1>Each tag is a request to the server</h1>
-<img src="images/litter.png" alt="one request per tag" width="78%">
+<img src="images/litter.png" alt="one request per tag" width="75%">
 
 	</div></section>
 	
 	<section class="slide small-code push-content-down" ><div>
 		<h2>With Asset-Pipeline</h2>
 <h1>Assets transpiled, concatenated, minified, gzipped into one file per type</h1>
-<pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/test-app/assets/application-08f92c4662379e3e9a56541af70c871c.css&quot;/&gt;</code>
+<pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/test-app/assets/app-08f92c4662379e3e9a56541af70c871c.css&quot;/&gt;</code>
 <code>&shy;</code>
-<code>&lt;script src=&quot;/test-app/assets/application-e1ec7cb3d4c455fac6e62f1faa6232f9.js&quot; type=&quot;text/javascript&quot; &gt;&lt;/script&gt;</code></pre>
+<code>&lt;script src=&quot;/test-app/assets/app-e1ec7cb3d4c455fac6e62f1faa6232f9.js&quot; type=&quot;text/javascript&quot; &gt;&lt;/script&gt;</code></pre>
 	</div></section>
 	
 	<section class="slide push-content-down" ><div>
@@ -126,7 +126,7 @@
 	<section class="slide danger" ><div>
 		<h2>Without Asset-Pipeline</h2>
 <h1>Browser cache isn&#39;t properly used</h1>
-<img src="images/vanilla_grails_response.png" alt="Vanilla grails response, no gzipping, bad etag" width="73%">
+<img src="images/vanilla_grails_response.png" alt="Vanilla grails response, no gzipping, bad etag" width="70%">
 
 	</div></section>
 	
@@ -154,7 +154,7 @@
 	<section class="slide push-content-down" ><div>
 		<h2>With Asset-Pipeline</h2>
 <h1>Can use anything that transpiles to browser-supported languages</h1>
-<h2>ex: SASS, LESS, CoffeeScript, ClojureScript, Dart, TypeScript…</h2>
+<h2>ex: SASS, LESS, CoffeeScript, ClojureScript …</h2>
 
 	</div></section>
 	
@@ -169,100 +169,297 @@
 
 	</div></section>
 	
-	<section class="slide " ><div>
-		<h1>TODO START HERE</h1>
+	<section class="slide smallish-code" ><div>
+		<h1>JavaScript Dependency Manifest</h1>
+<pre><code>//= encoding UTF-8</code>
+<code>//= require lib/angular.js</code>
+<code>//= require_self</code>
+<code>//= require_tree model</code>
+<code>&shy;</code>
+<code>(function () {</code>
+<code>  &#39;use strict&#39;;</code>
+<code>  console.log(&quot;loaded app.js&quot;);</code>
+<code>  …</code>
+<code>  });</code>
+<code>})();</code></pre><p><code>assets/javascripts/app.js</code></p>
+
+	</div></section>
+	
+	<section class="slide smallish-code" ><div>
+		<h1>CSS Dependency Manifest</h1>
+<pre><code>/*</code>
+<code>*= encoding UTF-8</code>
+<code>*= require fonts</code>
+<code>*= require bootstrap</code>
+<code>*= require_self</code>
+<code>*/</code>
+<code>&shy;</code>
+<code>input.ng-invalid.ng-dirty:not(:focus) {</code>
+<code>  border-color: #d43232;</code>
+<code>  background-color: #f2dede;</code>
+<code>}</code>
+<code>…</code></pre><p><code>assets/stylesheets/app.css</code></p>
+
+	</div></section>
+	
+	<section class="slide smallish-code" ><div>
+		<h1>Use Taglibs in Layout GSP</h1>
+<pre><code>&lt;head&gt;</code>
+<code>    &lt;title&gt;&lt;g:layoutTitle default=&quot;Some Title&quot; /&gt;&lt;/title&gt;</code>
+<code>    …</code>
+<code>    &lt;asset:link rel=&quot;shortcut icon&quot; href=&quot;favicon.ico&quot; type=&quot;image/x-icon&quot;/&gt;</code>
+<code>    &lt;asset:stylesheet href=&quot;app.css&quot;/&gt;</code>
+<code>    &lt;g:layoutHead /&gt;</code>
+<code>&lt;/head&gt;</code>
+<code>&lt;body&gt;</code>
+<code>    &lt;asset:image src=&quot;logo.png&quot; width=&quot;200&quot; height=&quot;200&quot;/&gt;</code>
+<code>    …</code>
+<code>    &lt;g:layoutBody /&gt;</code>
+<code>    …</code>
+<code>    &lt;asset:javascript src=&quot;app.js&quot;/&gt;</code>
+<code>    &lt;asset:deferredScripts/&gt;</code>
+<code>&lt;/body&gt;</code></pre><p><code>grails-app/views/layouts/main.gsp</code></p>
+
+	</div></section>
+	
+	<section class="slide smallish-code" ><div>
+		<h1>Defer JavaScript Snippets in Views</h1>
+<pre><code>&lt;div&gt;</code>
+<code>    &lt;h1&gt;foobar&lt;/h1&gt;</code>
+<code>&shy;</code>
+<code>    &lt;asset:script type=&quot;text/javascript&quot;&gt;</code>
+<code>      console.log(&quot;on foobar page&quot;);</code>
+<code>    &lt;/asset:script&gt;</code>
+<code>&lt;/div&gt;</code></pre><p><code>grails-app/views/user/index.gsp</code></p>
+<p>emitted at bottom of layout at <code>&lt;asset:deferredScripts/&gt;</code></p>
+
+	</div></section>
+	
+	<section class="slide quieter shout" ><div>
+		<h1>Dev Mode is Tuned for Quick Iteration</h1>
+<h2><code>grails run-app</code></h2>
+
+	</div></section>
+	
+	<section class="slide smallish-code" ><div>
+		<h1>All Files Served With Real Names</h1>
+<pre><code>// from: &lt;asset:stylesheet href=&quot;app.css&quot;/&gt; </code>
+<code>&shy;</code>
+<code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/myapp/assets/fonts.css&quot; /&gt;</code>
+<code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/myapp/assets/bootstrap.css&quot; /&gt;</code>
+<code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/myapp/assets/app.css&quot; /&gt;</code></pre><pre><code>// from: &lt;asset:javascript src=&quot;app.js&quot;/&gt; </code>
+<code>&shy;</code>
+<code>&lt;script src=&quot;/myapp/assets/lib/angular.js&quot; type=&quot;text/javascript&quot; &gt;&lt;/script&gt;</code>
+<code>&lt;script src=&quot;/myapp/assets/app.js&quot; type=&quot;text/javascript&quot; &gt;&lt;/script&gt;</code>
+<code>&lt;script src=&quot;/myapp/assets/model/Foo.js&quot; type=&quot;text/javascript&quot; &gt;&lt;/script&gt;</code>
+<code>&lt;script src=&quot;/myapp/assets/model/Bar.js&quot; type=&quot;text/javascript&quot; &gt;&lt;/script&gt;</code></pre>
+	</div></section>
+	
+	<section class="slide push-content-down" ><div>
+		<h1>In Development Files Will Not Cache</h1>
+<pre><code>// HTTP 1.1</code>
+<code>Cache-Control:no-cache, no-store, must-revalidate </code>
+<code>&shy;</code>
+<code>// HTTP 1.0</code>
+<code>Pragma:no-cache </code>
+<code>&shy;</code>
+<code>// for proxies</code>
+<code>Expires:Thu, 01 Jan 1970 00:00:00 GMT</code></pre><h2>Response Cache Headers</h2>
+
+	</div></section>
+	
+	<section class="slide quieter shout" ><div>
+		<h1>War File Serves<br/>Processed Assets</h1>
+<h2><code>grails war</code> or <code>grails run-war</code></h2>
+
+	</div></section>
+	
+	<section class="slide quietest shout" ><div>
+		<h1>War Compilation Puts All Assets<br/>Through the Full Pipeline</h1>
+<h2>adds <code>assetClean</code> and <code>assetCompile</code> events</h2>
+
+	</div></section>
+	
+	<section class="slide smallish-code" ><div>
+		<h1>war file has <code>assets</code> folder</h1>
+<pre><code>…</code>
+<code>assets/logo-7b9776076d5fceef4993b55c9383dedd.jpg</code>
+<code>assets/logo.jpg</code>
+<code>…</code>
+<code>assets/app-2b367068131a9dd4f31c18f635eb7e6c.css</code>
+<code>assets/app-2b367068131a9dd4f31c18f635eb7e6c.css.gz</code>
+<code>assets/app.css</code>
+<code>assets/app.css.gz</code>
+<code>…</code>
+<code>assets/app-4bf9739e18a6d5f665c42ecb7edbd339.js</code>
+<code>assets/app-4bf9739e18a6d5f665c42ecb7edbd339.js.gz</code>
+<code>assets/app.js</code>
+<code>assets/app.js.gz</code>
+<code>…</code>
+<code>assets/manifest.properties</code>
+<code>…</code></pre>
+	</div></section>
+	
+	<section class="slide smallish-code" ><div>
+		<h1>Creates <code>manifest.properties</code> File With ETag Mapping For Each Asset</h1>
+<pre><code>…</code>
+<code>logo.jpg=logo-7b9776076d5fceef4993b55c9383dedd.jpg</code>
+<code>…</code>
+<code>app.css=app-2b367068131a9dd4f31c18f635eb7e6c.css</code>
+<code>bootstrap.css=bootstrap-2b367068131a9dd4f31c18f635eb7e6c.css</code>
+<code>fonts.css=fonts-81f3e38a6e878acd57e3d51912c37b04.css</code>
+<code>…</code>
+<code>lib/angular.js=lib/angular-de39960f9b36bbbd76e76e7ed0086922.js</code>
+<code>app.js=app-4bf9739e18a6d5f665c42ecb7edbd339.js</code>
+<code>…</code></pre>
+	</div></section>
+	
+	<section class="slide quietest shout" ><div>
+		<h1><code>AssetPipelineFilter</code> Processes <code>/assets/*</code> Requests</h1>
+
+	</div></section>
+	
+	<section class="slide quietest shout" ><div>
+		<h1>looks for file in <code>/assets</code><br/>if found returns (gzipped?) file<br/> with ETag from manifest</h1>
 
 	</div></section>
 	
 	<section class="slide " ><div>
-		<h1>file types with manifest comments in them</h1>
-
-	</div></section>
-	
-	<section class="slide " ><div>
-		<h1>taglibs in gsps</h1>
-<pre><code>  asset:image</code></pre>
-	</div></section>
-	
-	<section class="slide " ><div>
-		<h1>dev mode goes through asset controller</h1>
-
-	</div></section>
-	
-	<section class="slide " ><div>
-		<h1>assets served as individual files</h1>
-<pre><code>show generated html</code></pre><p>set to never cache</p>
+		<h1>Optionally use CDN or Nginx</h1>
+<pre><code>grails.assets.url = &quot;https://cdn.example.com/&quot;</code>
+<code>&shy;</code>
+<code>// or</code>
+<code>&shy;</code>
+<code>grails.assets.url = { request -&gt;</code>
+<code>    if(request.isSecure()) {</code>
+<code>        return &quot;https://cdn.example.com/&quot;</code>
+<code>    } else {</code>
+<code>        return &quot;http://cdn.example.com/&quot;</code>
+<code>    }</code>
+<code>}</code></pre><p>(in <code>Config.groovy</code>)<br/>automate uploading with the cdn-asset-pipeline plugin</p>
 
 	</div></section>
 	
 	<section class="slide shout" ><div>
-		<h1>How Asset-Pipeline Works In Production</h1>
+		<h1>Writing Your Own Asset-Pipeline Plugin</h1>
 
 	</div></section>
 	
-	<section class="slide quietest shout" ><div>
-		<ul>
-<li>war compilation</li>
-<li>war creates manifest.properties file with etag mapping for each asset</li>
-<li>static assets in <code>assets</code> folder in the war file</li>
-</ul>
+	<section class="slide smallish-code" ><div>
+		<h1>Implement/Override an <code>AssetFile</code></h1>
+<pre><code>package asset.pipeline</code>
+<code>&shy;</code>
+<code>import asset.pipeline.AbstractAssetFile</code>
+<code>&shy;</code>
+<code>class MyAssetFile extends AbstractAssetFile { // implements AssetFile</code>
+<code>&shy;</code>
+<code>    static final String contentType = &#39;application/javascript&#39;</code>
+<code>    static extensions = [&#39;js-myfile&#39;] // MUST BE UNIQUE ACROSS ALL `AssetFile`s</code>
+<code>    static final String compiledExtension = &#39;js&#39;</code>
+<code>    static processors = [MyFileProcessor]</code>
+<code>&shy;</code>
+<code>    String directiveForLine(String line) {</code>
+<code>        // identifies the directive in manifest lines at top of file</code>
+<code>        // i.e. those starting with &#39;//=&#39;</code>
+<code>        line.find(/\/\/=(.*)/) { fullMatch, directive -&gt; directive }</code>
+<code>    }</code>
+<code>}</code></pre>
+	</div></section>
+	
+	<section class="slide smallish-code" ><div>
+		<h1>Create 1..N Processors</h1>
+<pre><code>package asset.pipeline</code>
+<code>&shy;</code>
+<code>class MyFileProcessor implements Processor {</code>
+<code>&shy;</code>
+<code>    MyFileProcessor(AssetCompiler compiler) { </code>
+<code>        // compiler gives us access to the options/rules/paths </code>
+<code>        // that asset-pipeline is running with</code>
+<code>        super(compiler) </code>
+<code>    }</code>
+<code>&shy;</code>
+<code>    // inputText - a String holding the contents of the asset</code>
+<code>    // assetFile - an AssetFile instance, has `file` and `baseFile` props </code>
+<code>    // expected to return - a String holding the processed asset text</code>
+<code>    def process(inputText, assetFile) {</code>
+<code>        // ex processor to turn the asset into all UPPER CASE</code>
+<code>        return inputText.toUpperCase()</code>
+<code>    }</code>
+<code>}</code></pre>
+	</div></section>
+	
+	<section class="slide smallish-code" ><div>
+		<h1>Configure Asset-Pipeline</h1>
+<pre><code>// MyAssetPipelineGrailsPlugin.groovy</code>
+<code>import asset.pipeline.AssetHelper</code>
+<code>import asset.pipeline.MyAssetFile</code>
+<code>&shy;</code>
+<code>class MyAssetPipelineGrailsPlugin {</code>
+<code>    // …</code>
+<code>&shy;</code>
+<code>    def doWithDynamicMethods = { ctx -&gt;</code>
+<code>        AssetHelper.assetSpecs &lt;&lt; MyAssetFile</code>
+<code>    }</code>
+<code>}</code></pre><pre><code>// scripts/_Events.groovy</code>
+<code>eventAssetPrecompileStart = { assetConfig -&gt;</code>
+<code>  assetConfig.specs &lt;&lt; &#39;asset.pipeline.MyAssetFile&#39;</code>
+<code>}</code></pre>
+	</div></section>
+	
+	<section class="slide shout" ><div>
+		<h1>Asset-Pipeline AngularJS Tips</h1>
 
 	</div></section>
 	
-	<section class="slide quietest shout" ><div>
-		<ul>
-<li><code>AssetPipelineFilter</code> added to <code>web.xml</code></li>
-<li>request for asset meets filter</li>
-<li>looks for file</li>
-<li>not found 404</li>
-<li>if found looks for etag in manifest</li>
-<li>returns gzipped file with etag and <code>Vary: Accept-Encoding</code></li>
-</ul>
-<ul>
-<li>cdn support?</li>
-</ul>
+	<section class="slide " ><div>
+		<h1>AngularJS - Minification Breaks Magic</h1>
+<pre><code>// AngularJS magic injects $window using arg name</code>
+<code>// MINIFICATION UNSAFE</code>
+<code>myApp.controller(&#39;MyCtrl&#39;, function($window) {</code>
+<code>    $window.alert(&quot;Hello World&quot;); </code>
+<code>});</code>
+<code>&shy;</code>
+<code>// SAFE for minification</code>
+<code>myApp.controller(&#39;MyCtrl&#39;, [&#39;$window&#39;, function($window) {</code>
+<code>    $window.alert(&quot;Hello World&quot;);</code>
+<code>}]);</code></pre><p>Either turn variable mangling off in <code>Config.groovy</code> or <br/> use Craig Burke&#39;s angular-annotate-asset-pipeline plugin</p>
 
 	</div></section>
 	
-	<section class="slide quietest shout" ><div>
-		<h1>Compilation Sausage Factory</h1>
-<ul>
-<li>AssetFile (1 per file)</li>
-<li>processor</li>
-<li>post processor?</li>
-<li>look at plugin.groovy file for other details</li>
-</ul>
+	<section class="slide smallish-code push-content-down" ><div>
+		<h1>angular-template-asset-pipeline</h1>
+<pre><code>// original: /grails-app/assets/templates/my-app/app-section/index.tpl.htm</code>
+<code>// &lt;h1&gt;Hello World!&lt;/h1&gt;</code>
+<code>&shy;</code>
+<code>angular.module(&#39;myApp.appSection&#39;)</code>
+<code>       .run([&#39;$templateCache&#39;, function($templateCache) {</code>
+<code>    $templateCache.put(&#39;index.htm&#39;, &#39;&lt;h1&gt;Hello World!&lt;/h1&gt;&#39;);</code>
+<code>}]);</code></pre><h2>Compile HTML templates Into <code>$templateCache</code></h2>
 
 	</div></section>
 	
 	<section class="slide quieter shout" ><div>
-		<h1>tips</h1>
-<ul>
-<li>angular mangling off for minifcation, or use angular plugin</li>
-<li>cdn support</li>
-<li>other plugins</li>
-<li>write your own asset pipeline plugin</li>
-</ul>
+		<h1>Advantages Over the Resources Plugin</h1>
 
 	</div></section>
 	
 	<section class="slide quieter shout" ><div>
-		<h1>Advantages over Resources Plugin</h1>
+		<h1>No Waiting to Recompile in Development</h1>
 
 	</div></section>
 	
 	<section class="slide quieter shout" ><div>
-		<h1>no waiting to recompile in development</h1>
+		<h1>Precompilation Allows Faster War Startup</h1>
 
 	</div></section>
 	
 	<section class="slide quieter shout" ><div>
-		<h1>precompilation means easier troubleshooting &amp; faster war startup</h1>
+		<h1>Dependencies Are Inside Assets</h1>
 
 	</div></section>
 	
 	<section class="slide quieter shout" ><div>
-		<h1>dependencies are with assets</h1>
+		<h1>Actively Developed</h1>
 
 	</div></section>
 	
@@ -271,8 +468,51 @@
 
 	</div></section>
 	
-	<section class="slide quieter shout" ><div>
-		<h1>TODO: insert resources rosetta stone</h1>
+	<section class="slide " ><div>
+		<h1>Resources</h1>
+<h2>layout: <code>&lt;r:require modules=&quot;app&quot;/&gt;</code></h2>
+<p><br/></p>
+<h1>Asset-Pipeline</h1>
+<h2>layout: <code>&lt;asset:stylesheet href=&quot;app.css&quot;/&gt;</code></h2>
+<h2>bottom of layout &lt;body&gt;: <code>&lt;asset:javascript src=&quot;app.js&quot;/&gt;</code></h2>
+
+	</div></section>
+	
+	<section class="slide " ><div>
+		<h1>Resources</h1>
+<h2><code>&lt;r:external uri=&quot;/img/favicon.ico&quot;/&gt;</code></h2>
+<p><br/></p>
+<h1>Asset-Pipeline</h1>
+<h2><code>&lt;asset:link rel=&quot;shortcut icon&quot; href=&quot;favicon.ico&quot; type=&quot;image/x-icon&quot;/&gt;</code></h2>
+
+	</div></section>
+	
+	<section class="slide " ><div>
+		<h1>Resources</h1>
+<h2><code>&lt;g:img dir=&quot;img&quot; file=&quot;logo.jpg&quot; alt=&quot;The Logo&quot; /&gt;</code></h2>
+<p><br/></p>
+<h1>Asset-Pipeline</h1>
+<h2><code>&lt;asset:image src=&quot;logo.png&quot; alt=&quot;The Logo&quot;/&gt;</code></h2>
+
+	</div></section>
+	
+	<section class="slide " ><div>
+		<h1>Resources</h1>
+<h2>gsp: <code>&lt;r:script disposition=&quot;defer&quot;&gt;alert(&#39;foo&#39;);&lt;/r:script&gt;</code></h2>
+<h2>layout: <code>&lt;r:layoutResources/&gt;</code></h2>
+<p><br/></p>
+<h1>Asset-Pipeline</h1>
+<h2>gsp: <code>&lt;asset:script&gt;alert(&#39;foo&#39;);&lt;/asset:script&gt;</code></h2>
+<h2>layout: <code>&lt;asset:deferredScripts/&gt;</code></h2>
+
+	</div></section>
+	
+	<section class="slide " ><div>
+		<h1>Resources</h1>
+<h2>in gsp: <code>href=&quot;${resource(dir: &#39;css&#39;, file: &#39;errors.css&#39;)}&quot;</code></h2>
+<p><br/></p>
+<h1>Asset-Pipeline</h1>
+<h2>in gsp: <code>href=&quot;${asset.assetPath(src: &#39;errors.css&#39;)}&quot;</code></h2>
 
 	</div></section>
 	
@@ -283,13 +523,13 @@
 	
 	<section class="slide quieter shout" ><div>
 		<h1>gradle</h1>
-<h2>weak JS support, not part of grails build without more work, doesn&#39;t solve caching/etags</h2>
+<h2>not part of grails build without more work, <br/> doesn&#39;t solve caching/etags</h2>
 
 	</div></section>
 	
 	<section class="slide quieter shout" ><div>
 		<h1>grunt/gulp</h1>
-<h2>requires buy-in/support of node.js ecosystem, doesn&#39;t solve caching/etags</h2>
+<h2>requires buy-in/support of node.js <br/>ecosystem, doesn&#39;t solve caching/etags</h2>
 
 	</div></section>
 	
