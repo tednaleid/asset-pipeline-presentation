@@ -48,8 +48,6 @@ by <a href="https://twitter.com/tednaleid">@tednaleid</a>
 !SLIDE quieter shout
 # Behavior<br/>With & <span class="danger">Without</span><br/>Asset-Pipeline
 
-## (or the resources plugin)
-
 
 !SLIDE small-code danger 
 ## Without Asset-Pipeline
@@ -275,7 +273,7 @@ Expires:Thu, 01 Jan 1970 00:00:00 GMT
 
 !SLIDE smallish-code
 
-# war file has `assets` folder 
+# War File has `assets` Folder 
 
 ```
 …
@@ -450,8 +448,13 @@ angular.module('myApp.appSection')
 ```
 ## Compile HTML templates Into `$templateCache`
 
+
 !SLIDE quieter shout
 # Advantages Over the Resources Plugin
+
+
+!SLIDE quieter shout
+# Allows the use <br/>of a CDN
 
 
 !SLIDE quieter shout
@@ -460,6 +463,7 @@ angular.module('myApp.appSection')
 
 !SLIDE quieter shout
 # Precompilation Allows Faster War Startup
+
 
 !SLIDE quieter shout
 # Dependencies Are Inside Assets
